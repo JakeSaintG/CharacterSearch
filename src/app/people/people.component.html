@@ -1,0 +1,31 @@
+<div>
+    <div class='card-body'>
+        <div class='row'>
+            <h4>Search by name:</h4>
+            <div>
+                <input type="text">
+            </div>
+        </div>
+
+        <table class='people-table' *ngIf='people.length'>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Birthday</th>
+                    <th>Address</th>
+                    <th>Interests</th>                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = 'let people of people'>
+                    <td>{{people.image}}</td>
+                    <td>{{people.name}}</td>
+                    <td>{{people.birthDate}}</td>
+                    <td>{{people.address.street}}</td>
+                    <td>{{people.interests}}</td>     
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

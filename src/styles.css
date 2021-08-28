@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+.navigation {
+    display: flex;
+    background-color: brown;
+    width: 100%;
+    margin: 0;
+    justify-content: space-between;
+}
+
+table {
+    width: 100%;
+}
+
+table,
+tr,
+td,
+th {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+.people-table {
+    border: 1px solid black;
+    margin: 0;
+    padding: 0;
+}
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+    
+  }
+
+  @media screen and (max-width: 575px) {
+    
+  }
