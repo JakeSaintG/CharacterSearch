@@ -1,0 +1,23 @@
+
+table,
+tr,
+td,
+th {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+.people-table {
+    border: 1px solid black;
+    width: 96%;
+    margin: 1rem auto;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 767px) {
+    
+}
+
+@media screen and (max-width: 575px) {
+  
+}

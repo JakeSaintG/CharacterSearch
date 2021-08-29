@@ -1,10 +1,13 @@
-<div>
-    <div class='card-body'>
-        <div class='row'>
-            <h4>Search by name:</h4>
+<div class='main'>
+    <div class=''>
+        <div class=''>
+            <h4>Search by name: {{listFilter}}</h4>
             <div>
-                <input type="text">
+                <input type="text"
+                    [(ngModel)]='listFilter'>
             </div>
+            <button>Search</button>
+            <button>Slow Down Connection</button>
         </div>
 
         <table class='people-table' *ngIf='people.length'>
@@ -19,11 +22,27 @@
             </thead>
             <tbody>
                 <tr *ngFor = 'let people of people'>
-                    <td>{{people.image}}</td>
-                    <td>{{people.name}}</td>
-                    <td>{{people.birthDate}}</td>
-                    <td>{{people.address.street}}</td>
-                    <td>{{people.interests}}</td>     
+                    <td>
+                        <img [src]="people.image" alt="Picture of {{people.image}}"
+                        [style.width.px]= 'imageWidth'
+                        [style.margin.px]='imageMargin'>
+                    </td>
+                    <td>{{people.name | titlecase}}</td>
+                    <!-- May not be a bad idea to build a custom pipe to handle "St. Germain" and McCartney-->
+                    <td>{{people.birthDate | date:'mediumDate'}}</td>
+                    <td>
+                        <ul>
+                            <li>{{people.address.street}}</li>
+                            <li>{{people.address.city}}</li>
+                            <li>{{people.address.state}}</li>
+                            <li>{{people.address.zip}}</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li *ngFor='let interest of people.interests'>{{interest}}</li>
+                        </ul>
+                    </td>     
                 </tr>
             </tbody>
         </table>

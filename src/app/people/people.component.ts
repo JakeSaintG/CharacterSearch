@@ -1,13 +1,18 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { IPeople } from "./people";
 
 @Component({
     selector: `ps-people`,
-    templateUrl: `./people.component.html`
+    templateUrl: `./people.component.html`,
+    styleUrls: ['./people.component.css']
 })
 
-export class PeopleListComponent {
+export class PeopleListComponent implements OnInit {
     pageTitle: string = `People List`;
-    people: any[] = [
+    imageWidth: number =  50;
+    imageMargin: number = 2;
+    listFilter: string = '';
+    people: IPeople[] = [
         {
             id: 9,
             name: "tina turner",
@@ -22,7 +27,12 @@ export class PeopleListComponent {
                 "Mad Max",
                 "The Sonny & Cher Show"
             ],
-            image: "ByteArray"
+            image: "http://localhost:5000/PeopleImage/9.webp"
         }
-    ]
+    ];
+
+    ngOnInit = (): void => {
+        console.log('Nice!')
+        //get data from my API
+    }
 }
