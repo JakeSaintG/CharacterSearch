@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-//import { DelayComponent } from './delay/delay.component';
 import { PeopleListComponent } from './people/getPeople/people.component';
 import { AddPeopleComponent } from './people/sendPeople/addPeople.component';
 
@@ -17,7 +16,6 @@ import { AddPeopleComponent } from './people/sendPeople/addPeople.component';
   imports: [
     BrowserModule,
     FormsModule,
-    //DelayComponent,
     HttpClientModule
   ],
   providers: [],

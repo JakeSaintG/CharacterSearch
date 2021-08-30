@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { IPeople } from "./people";
-//import { DelayComponent } from "../delay/delay.component";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from "rxjs";
 import { tap, catchError} from "rxjs/operators";
