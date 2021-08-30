@@ -30,9 +30,39 @@ export class PeopleListComponent implements OnInit {
             image: "http://localhost:5000/PeopleImage/9.webp"
         }
     ];
+    private _hideLoad: boolean = true;
+    get hideLoad(): boolean {
+        return this._hideLoad;
+    };
+    set hideLoad(value: boolean){
+        this._hideLoad = value;
+    }
+
+    private _delay: number = 0;
+    get delay(): number {
+        return this._delay;
+    };
+    set delay(value: number){
+        this._delay = value;
+    }
 
     ngOnInit = (): void => {
         console.log('Nice!')
         //get data from my API
+    };
+
+    changeDelay(e: any) {
+        var delayInSeconds: number = e.target.value * 1000;
+        this.delay = delayInSeconds;
     }
+    
+    fetchWithDelay = () => {
+        this.hideLoad = false;
+        setTimeout(this.fetchPeople, this.delay);
+        this.hideLoad = true;
+    };
+
+    fetchPeople = () => {
+        console.log(`Delayed by: ${this.delay} milliseconds`);
+    };
 }

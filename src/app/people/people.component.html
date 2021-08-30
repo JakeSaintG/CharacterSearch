@@ -6,8 +6,9 @@
                 <input type="text"
                     [(ngModel)]='listFilter'>
             </div>
-            <button>Search</button>
-            <button>Slow Down Connection</button>
+            <button (click)="fetchWithDelay()">Search</button>
+            <label for="delaySlider">Delay Search (in seconds):</label><br>
+            <input type="range" min="0" max="5" value="0" class="slider" id="delaySlider" (input)="changeDelay($event)">
         </div>
 
         <table class='people-table' *ngIf='people.length'>
@@ -21,6 +22,9 @@
                 </tr>
             </thead>
             <tbody>
+                <tr [hidden]="hideLoad">
+                    loading
+                </tr>
                 <tr *ngFor = 'let people of people'>
                     <td>
                         <img [src]="people.image" alt="Picture of {{people.image}}"

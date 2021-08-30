@@ -13,6 +13,10 @@ th {
     margin: 1rem auto;
 }
 
+.loaded {
+    display: none;
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 767px) {
     
