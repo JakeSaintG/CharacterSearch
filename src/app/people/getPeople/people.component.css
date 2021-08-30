@@ -13,6 +13,21 @@ th {
     margin: 1rem auto;
 }
 
+.searchControlsContainer{
+    width: 96%;
+    margin: 1rem auto 0 auto;
+}
+
+.searchControls,
+.searchControls > * {
+    display: flex;
+    align-items: center;
+}
+
+.searchControls {
+    justify-content: space-between;
+}
+
 .loaded {
     display: none;
 }

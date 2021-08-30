@@ -1,14 +1,20 @@
-<div class='main'>
+<div class='peopleTable'>
     <div class=''>
-        <div class=''>
-            <h4>Search by name: {{listFilter}}</h4>
-            <div>
-                <input type="text"
-                    [(ngModel)]='listFilter'>
+        <div class='searchControlsContainer'>
+            <div class='searchControls'>
+                <div>
+                    <div>
+                        <input type="text"
+                            [(ngModel)]='listFilter'>
+                    </div>
+                    <button (click)="fetchWithDelay()">Search</button>
+                </div>
+                <div>    
+                    <label for="delaySlider">Delay Search (in seconds):</label><br>
+                    <input type="range" min="0" max="5" value="0" class="slider" id="delaySlider" (input)="changeDelay($event)">
+                </div>
             </div>
-            <button (click)="fetchWithDelay()">Search</button>
-            <label for="delaySlider">Delay Search (in seconds):</label><br>
-            <input type="range" min="0" max="5" value="0" class="slider" id="delaySlider" (input)="changeDelay($event)">
+            <h4>Search by name: {{listFilter}}</h4>
         </div>
 
         <table class='people-table' *ngIf='people.length'>
