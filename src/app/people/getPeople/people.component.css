@@ -24,6 +24,34 @@ th {
     border: 1px solid black;
     width: 96%;
     margin: 1rem auto;
+    list-style: none;
+}
+
+.person-image {
+    border-radius: 30%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* .people-address {
+    
+} */
+
+.person-interests{
+    list-style: none;
+    padding: 0;
+}
+
+.person-interests > * {
+    width: 100%;
+}
+
+.person-interests > *:nth-child(odd){
+    background-color: rgb(241, 168, 168);
+}
+
+.person-interests > *:first-letter {
+    text-transform: capitalize
 }
 
 .searchControlsContainer{

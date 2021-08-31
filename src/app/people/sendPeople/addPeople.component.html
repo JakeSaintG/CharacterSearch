@@ -4,8 +4,9 @@
         <form class= "personal-form" action="" >
             <span>
                 <label for="add-person-name">Name: </label>
-                <input type="text" name="name" id="add-person-name" [(ngModel)]="postUserName">
+                <input type="text" name="name" id="add-person-name" [(ngModel)]="postUserName">      
             </span>
+            <p *ngIf="displayWarning">*Name is required!</p>
             <span>
                 <label for="add-person-bday">Birthday: </label>
                 <input type="date" name="birthday" id="add-person-bday" [(ngModel)]="postUserBirthdate">
@@ -42,13 +43,14 @@
             </div>            
         </form>
         <h4>Add picture:</h4>
-        <label for="picture-form-input">Upload Photo: </label>
-        <input type="file" name="Upload photo" id="picture-form-input" accept=".webp,.png,.jpg">
+        <form>
+            <label for="picture-form-input">Upload Photo: </label>
+            <input type="file" name="Upload photo" id="picture-form-input" accept=".webp,.png,.jpg" [(ngModel)]="postUserImage">
+        </form>
     </form>
     <div class="form-controls">
         <button (click)='showForm()'>{{showOrHide}}</button>
-        <!-- make it say "close" -->
-        <button *ngIf="displayForm" (click)='postUser()'>Submit</button>
-        <button *ngIf="displayForm">Auto fill</button>
+        <button *ngIf="displayForm" (click)="postUserImg()" (click)='postUser()'>Submit</button> 
+        <button *ngIf="displayForm" (click)='fillUser()'>Auto fill</button>
     </div>
 </div>

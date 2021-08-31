@@ -1,0 +1,17 @@
+.title {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.disclaimer{
+    color:rgb(253, 251, 241);
+    
+}
+
+.welcome {
+    font-size: 35px;
+    height: 100%;
+    font-weight: bold;
+    color:rgb(253, 251, 241)
+}

@@ -22,6 +22,11 @@
                 <h3>The person that you searched for cannot be found!</h3>
                 <p >You can add them or check your spelling.</p>
             </div>
+            <div [hidden]="hideLoad">
+                <div class="progressBar">
+                    <span><span class="progress" [style]='loadingProgress'></span></span>
+                </div>          
+            </div>
         </div>
         <table class='people-table' *ngIf='people.length'>
             <thead>
@@ -37,23 +42,22 @@
 
                 <tr *ngFor = 'let people of people'>
                     <td>
-                        <img [src]="people.image" alt="Picture of {{people.image}}"
+                        <img [src]="people.image" alt="Picture of {{people.name}}"
                         [style.width.px]= 'imageWidth'
-                        [style.margin.px]='imageMargin'>
+                        class = "person-image">
                     </td>
                     <td>{{people.name | titlecase}}</td>
-                    <!-- May not be a bad idea to build a custom pipe to handle "St. Germain" and McCartney-->
+                    <!-- TODO: build a custom pipe to handle "St. Germain" and McCartney-->
                     <td>{{people.birthDate | date:'mediumDate'}}</td>
                     <td>
-                        <ul>
-                            <li>{{people.address.street}}</li>
-                            <li>{{people.address.city}}</li>
-                            <li>{{people.address.state}}</li>
-                            <li>{{people.address.zip}}</li>
-                        </ul>
+                        <div class="people-address">
+                            {{people.address.street}} <br>
+                            {{people.address.city}}, {{people.address.state}} <br>
+                            {{people.address.zip}}
+                        </div>
                     </td>
                     <td>
-                        <ul>
+                        <ul class="person-interests" >
                             <li *ngFor='let interest of people.interests'>{{interest}}</li>
                         </ul>
                     </td>     

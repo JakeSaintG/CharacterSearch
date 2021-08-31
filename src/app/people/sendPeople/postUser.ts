@@ -1,4 +1,5 @@
 export interface IPostUser {
+    id: number,
     name: string,
     birthDate: Date,
     address: IUserAddress,

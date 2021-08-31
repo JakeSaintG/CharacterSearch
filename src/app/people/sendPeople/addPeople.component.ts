@@ -1,9 +1,8 @@
 import { Component } from "@angular/core";
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from "rxjs";
 import { tap, catchError} from "rxjs/operators";
 import { IPostUser, IUserAddress } from "./postUser";
-import { PeopleListComponent } from "../getPeople/people.component";
+import { HttpClient, HttpEvent, HttpErrorResponse, HttpEventType } from  '@angular/common/http';
 
 @Component({
     selector: `ps-addPeople`,
@@ -11,9 +10,9 @@ import { PeopleListComponent } from "../getPeople/people.component";
     styleUrls: ['./addPeople.component.css']
 })
 
-export class AddPeopleComponent {
-    //people: IPostUser = {"name":"janis joplin","birthDate":"1943-01-19T00:00:00","address":{"street":"635 ashbury street","city":"san francisco","state":"California","zip":94117},"interests":["painting","reading","poetry"]}
-    
+export class AddPeopleComponent {    
+    //Setting initial form data to allow the form to be reset.
+    initUserId!:number;
     initUserName:string = '';
     initUserBirthdate:Date = new Date;
     initUserStreet:string = '';
@@ -21,7 +20,10 @@ export class AddPeopleComponent {
     initUserState:string = '';
     initUserZip!:number;
     initUserInterests:string[] = [];
+    initUserImage!:File;
     
+    //Using NgModel to set the form data.
+    postUserId:number = this.initUserId;
     postUserName:string = this.initUserName;
     postUserBirthdate:Date = this.initUserBirthdate;
     postUserStreet:string = this.initUserStreet;
@@ -29,13 +31,18 @@ export class AddPeopleComponent {
     postUserState:string = this.initUserState;
     postUserZip:number = this.initUserZip;
     postUserInterests:string[] = this.initUserInterests;
-
+    postUserImage:File = this.initUserImage;
     postUserAddress:IUserAddress = {street: this.postUserStreet,"city": this.postUserCity, "state": this.postUserState, "zip": this.postUserZip};
-    people: IPostUser = {name: this.postUserName, birthDate: this.postUserBirthdate, address: this.postUserAddress, "interests":this.postUserInterests}
+    people: IPostUser = {id: this.postUserId, name: this.postUserName, birthDate: this.postUserBirthdate, address: this.postUserAddress, "interests":this.postUserInterests}
     
-    
+    //For displaying "name is required"
+    displayWarning: boolean = false;
+    //For changing the text on the button to show or hide form.
     showOrHide: string = "Add User";
+    //For displaying error message.
     errorMessage: string = '';
+
+    //Getter and Setter for displaying user input
     private _displayForm: boolean = false;
     get displayForm(): boolean {
         return this._displayForm;
@@ -44,8 +51,7 @@ export class AddPeopleComponent {
         this._displayForm = value;
     }
     
-    private _interestCount: number[] = [1];
-    
+    private _interestCount: number[] = [1];   
     get interestCount(): number[] {
         return this._interestCount;
     };
@@ -54,7 +60,13 @@ export class AddPeopleComponent {
     }
 
     constructor(private http: HttpClient) {}
-    
+
+    //Generates a unique userID that will be used to connect the person to their image on the backend.
+    generateUserId = () => {
+        this.postUserId = Math.floor(100000000 + Math.random() * 900000000);
+    }
+
+    //Shows the form for submitting a new person.
     showForm = () => {
         this.displayForm = !this.displayForm;
         if (this.displayForm) {
@@ -63,6 +75,8 @@ export class AddPeopleComponent {
             this.showOrHide = "Add User";
         }
     }
+
+    //Controls the amount of "interest" boxes on the page.
     addInterest = () => {
         this.interestCount.push(1);
     }
@@ -71,19 +85,9 @@ export class AddPeopleComponent {
         this.interestCount.pop();
     }
 
-
-
-    // displayLoading = () => {
-    //     this.hideLoad = !this.hideLoad;    
-    // };
-
-    // fetchWithDelay = () =>{ 
-    //     PeopleListComponent.displayLoading();
-    //     this.people = [];
-    //     setTimeout(this.fetchPeople, this.delay)    
-    // }
-
+    //resets the fields in the submission block
     setFieldsToinit = (): void => {
+        this.postUserId = this.initUserId;
         this.postUserName = this.initUserName;
         this.postUserBirthdate = this.initUserBirthdate;
         this.postUserStreet = this.initUserStreet;
@@ -91,12 +95,36 @@ export class AddPeopleComponent {
         this.postUserState = this.initUserState;
         this.postUserZip = this.initUserZip;
         this.postUserInterests = this.initUserInterests;
+        this.postUserImage = this.initUserImage;
     }
 
-    postUser = () => {   
-        //console.log(`Delayed by: ${this.delay} milliseconds`);
+    //Posts uploaded image to PeopleAPI
+    postUserImg = () => { 
+        if(!this.postUserImage) return;
+        let imageUrl = "http://localhost:5000/PeopleImage/";
+        let postImg = this.http.post(imageUrl, this.postUserImage).pipe(
+            catchError(this.handleError)  
+        );
+        postImg.subscribe({
+            error: err => {this.errorMessage = err}
+        });
 
+        /*========================================================================
+        Not currently functional
+        Must also rename image to the unique userID (this.postUserId) to be matched later.
+        ========================================================================*/
+    }
+
+    //Posts entered Person to PeopleAPI
+    postUser = () => {  
+        if(!this.postUserName) {
+            this.displayWarning = true;
+            return
+        };
+        
+        this.generateUserId();
         let fullUrl:string = "http://localhost:5000/people/";
+        this.people.id = this.postUserId;
         this.people.name = this.postUserName;
         this.people.birthDate = this.postUserBirthdate;
         this.postUserAddress.street = this.postUserStreet;
@@ -111,9 +139,7 @@ export class AddPeopleComponent {
         );
 
         postUser.subscribe({
-            //next: people => {this.people = people},
-            //complete: this.displayLoading,
-            error: err => {this.errorMessage = err/*, this.displayLoading*/()}
+            error: err => {this.errorMessage = err}
         });
 
         this.setFieldsToinit();
@@ -128,4 +154,15 @@ export class AddPeopleComponent {
         console.error(this.errorMessage);
         return throwError(this.errorMessage);
     }
+
+    //Allows the user to fill in most fields automatically for easy testing.
+    fillUser = () => {
+        this.postUserName = "janis joplin";
+        this.postUserBirthdate = new Date("1943-01-19");
+        this.postUserStreet = "635 ashbury street";
+        this.postUserCity = "san francisco";
+        this.postUserState = "California";
+        this.postUserZip = 94117;
+        this.postUserInterests = ["painting"];
+    } 
 }

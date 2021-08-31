@@ -12,8 +12,7 @@ import { tap, catchError} from "rxjs/operators";
 
 export class PeopleListComponent implements OnInit {
     pageTitle: string = `People List`;
-    imageWidth: number =  50;
-    imageMargin: number = 2;
+    imageWidth: number =  60;
     listFilter: string = '';
     people: IPeople[] = [];
     errorMessage: string = '';
@@ -22,15 +21,16 @@ export class PeopleListComponent implements OnInit {
     private peopleAPIUrl: string = 'http://localhost:5000/people/';
     constructor(private http: HttpClient) {}
 
+    //Getter and setter for displaying or hiding the loading bar
     private _hideLoad: boolean = true;
     get hideLoad(): boolean {
         return this._hideLoad;
     };
     set hideLoad(value: boolean){
         this._hideLoad = value;
-
     }
 
+    //Getter and setter for how much delay will be set
     private _delay: number = 0;
     get delay(): number {
         return this._delay;
@@ -44,9 +44,9 @@ export class PeopleListComponent implements OnInit {
         this.displayLoading()
     };
 
+    //Sets slider value to seconds and sets the animation length
     changeDelay(e: any) {
         var delayInSeconds: number = e.target.value * 1000;
-
         var foo = `animation: progressBar ${e.target.value}s ease-in-out;`;
         this.loadingProgress = foo;
         this.delay = delayInSeconds;
@@ -56,21 +56,21 @@ export class PeopleListComponent implements OnInit {
         this.hideLoad = !this.hideLoad;    
     };
 
+    //Calls fetchPeople() after being delayed.
     fetchWithDelay = () =>{ 
         this.displayLoading();
         this.people = [];
         setTimeout(this.fetchPeople, this.delay)    
     }
 
+    //Connects to PeopleAPI to get requested information.
     fetchPeople = () => {   
         console.log(`Delayed by: ${this.delay} milliseconds`);
         let fullUrl = this.peopleAPIUrl + this.input;
-
         let getPeople = this.http.get<IPeople[]>(fullUrl).pipe(
             //tap(data => console.log('All: ', JSON.stringify(data))),
             catchError(this.handleError)  
         );
-
         getPeople.subscribe({
             next: people => {this.people = people},
             complete: this.displayLoading,
