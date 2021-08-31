@@ -100,9 +100,15 @@ export class AddPeopleComponent {
     }
 
     fileToUpload: File | any = null;
-    handleFileInput(files: FileList | any) {
-        // this.fileToUpload = files.item(0); <==========Recommended but: gave ".item() is not a function" error
-        this.fileToUpload = files.item[0];
+    handleFileInput(event: any) {
+        // files: FileList | any
+        
+        let files = event.value;
+        console.log(files);
+
+        
+
+        this.fileToUpload = files;
     }
     
     

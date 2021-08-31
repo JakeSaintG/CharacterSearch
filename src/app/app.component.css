@@ -21,3 +21,12 @@
     font-weight: bold;
     color:rgb(253, 251, 241)
 }
+
+.spacer {
+    height: 100%;
+    margin:auto 0;
+}
+
+.spacer img {
+    margin-right: 5px;
+}

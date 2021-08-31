@@ -47,9 +47,10 @@
         <div class="upload-form">
             <label for="file">Choose File</label>
             <input type="file"
-                    id="file"
-                    (change)="handleFileInput($event.target.files)"
+                    id="file"            
+                    (change)="handleFileInput($event.target)"
                     >
+                    
         </div>
     </form>
     <div class="form-controls">
