@@ -43,7 +43,7 @@ export class AddPeopleComponent {
     errorMessage: string = '';
 
     //Getter and Setter for displaying user input
-    private _displayForm: boolean = true;
+    private _displayForm: boolean = false;
     get displayForm(): boolean {
         return this._displayForm;
     };

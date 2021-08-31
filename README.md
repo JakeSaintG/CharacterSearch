@@ -8,11 +8,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Angular Command Line Interface
 
 ## Build
- Make sure that you have @angular-devkit/build-angular installed.
-- If the application fails to build, run the below command:
-```sh
-npm install --save-dev @angular-devkit/build-angular
-```
 Run the below command to build the project. The build artifacts will be stored in the `dist/` directory.
 ```sh
 ng build
