@@ -64,7 +64,9 @@ export class AddPeopleComponent {
 
     //Generates a unique userID that will be used to connect the person to their image on the backend.
     generateUserId = () => {
-        this.postUserId = Math.floor(100000000 + Math.random() * 900000000);
+         let randomID = Math.floor(100000000 + Math.random() * 900000000);
+         this.postUserId = randomID;
+         return randomID;
     }
 
     //Shows the form for submitting a new person.
@@ -101,10 +103,7 @@ export class AddPeopleComponent {
 
     fileToUpload!: File | Blob;
     handleFileInput(event: any) {
-        let file = event.target.files[0];
-        console.log(file);
-
-        this.fileToUpload = file;
+        this.fileToUpload = event.target.files[0];
         console.log(this.fileToUpload);
     }
     
@@ -115,7 +114,7 @@ export class AddPeopleComponent {
         if (this.fileToUpload=== undefined) {
             return;
         } else {
-            this.fileUploadService.postFile(this.fileToUpload).subscribe(data => {
+            this.fileUploadService.postFile(this.fileToUpload, this.generateUserId()).subscribe(data => {
                 console.log("Image uploaded!");// do something, if upload success
             }, error => {
                 console.log(error);
@@ -136,7 +135,6 @@ export class AddPeopleComponent {
             return
         };
         
-        this.generateUserId();
         let fullUrl:string = "http://localhost:5000/people/";
         this.people.id = this.postUserId;
         this.people.name = this.postUserName;
