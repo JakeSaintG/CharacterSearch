@@ -9,7 +9,8 @@ th {
 
 .prompt {
     width: 96%;
-    background-color: cornflowerblue;
+    background-color: brown;
+    color:rgb(253, 251, 241);
     display: flex;
     flex-direction: column;
     margin: 1rem auto;
@@ -44,10 +45,11 @@ th {
 
 .person-interests > * {
     width: 100%;
+    font-weight: bold;
 }
 
 .person-interests > *:nth-child(odd){
-    background-color: rgb(241, 168, 168);
+    background-color: rgb(229, 157, 157);
 }
 
 .person-interests > *:first-letter {
@@ -83,7 +85,7 @@ th {
 }
 
 .progress {
-    background-color: #e46565;
+    background-color:brown;
     animation-fill-mode:both; 
 }
 
