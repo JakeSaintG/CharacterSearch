@@ -7,6 +7,19 @@ th {
     border: 1px solid black;
 }
 
+.prompt {
+    width: 96%;
+    background-color: cornflowerblue;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem auto;
+}
+
+.prompt > * {
+    border: 1px solid black;
+    text-align: center;
+}
+
 .people-table {
     border: 1px solid black;
     width: 96%;
@@ -28,8 +41,27 @@ th {
     justify-content: space-between;
 }
 
-.loaded {
-    display: none;
+.progressBar { 
+    height: 15px;
+    position: relative;
+    background: #f3efe6;
+    overflow: hidden;
+}
+
+.progressBar span {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.progress {
+    background-color: #e46565;
+    animation-fill-mode:both; 
+}
+
+@keyframes progressBar {
+  0% { width: 0; }
+  100% { width: 100%; }
 }
 
 /* Responsive Styles */

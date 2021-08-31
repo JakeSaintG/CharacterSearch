@@ -1,3 +1,54 @@
-<div>
-    <button>Add People</button>
+<div class="add-people">
+    <form class="main-form" action="" *ngIf="displayForm">
+        <h4>Name and Birthday:</h4>
+        <form class= "personal-form" action="" >
+            <span>
+                <label for="add-person-name">Name: </label>
+                <input type="text" name="name" id="add-person-name" [(ngModel)]="postUserName">
+            </span>
+            <span>
+                <label for="add-person-bday">Birthday: </label>
+                <input type="date" name="birthday" id="add-person-bday" [(ngModel)]="postUserBirthdate">
+            </span>
+
+        </form>
+        <h4>Address:</h4>
+        <form class="address-form" action="">
+            <span>
+                <label for="add-person-street">Street: </label>
+                <input type="text" name="street-address" id="add-person-street" [(ngModel)]="postUserStreet">
+            </span>
+            <span>
+                <label for="add-person-city">City: </label>
+                <input type="text" name="city-address" id="add-person-city" [(ngModel)]="postUserCity">
+            </span>
+            <span>
+                <label for="add-person-state">State: </label>
+                <input type="text" name="state-address" id="add-person-state" [(ngModel)]="postUserState">
+            </span>
+            <span>
+                <label for="add-person-zip">Zip: </label>
+                <input type="number" name="zip" id="add-person-zip" [(ngModel)]="postUserZip">
+            </span>
+        </form>
+        <h4>Interests:</h4>
+        <form class="interests-form" action="">
+            <div class="interests-form-input">
+                <input type="text" name="interest" *ngFor = "let interest of interestCount; let i=index" [(ngModel)]="postUserInterests[i]" value="postUserInterests[i]">
+            </div>
+            <div class="interests-controls">
+                <button (click)="addInterest()" [disabled]="interestCount.length >= 8">Add</button>
+                <button (click)="removeInterest()" [disabled]="interestCount.length <= 1">Remove</button>
+            </div>            
+        </form>
+        <h4>Add picture:</h4>
+        <label for="picture-form-input">Upload Photo: </label>
+        <input type="file" name="Upload photo" id="picture-form-input" accept=".webp,.png,.jpg">
+    </form>
+    <div class="form-controls">
+        <button (click)='showForm()'>{{showOrHide}}</button>
+        <!-- make it say "close" -->
+        <button *ngIf="displayForm" (click)='postUser()'>Submit</button>
+        <button *ngIf="displayForm">Auto fill</button>
+    </div>
 </div>

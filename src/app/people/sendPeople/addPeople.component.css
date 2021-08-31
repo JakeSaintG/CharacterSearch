@@ -1,0 +1,78 @@
+.add-people {
+    display: flex;
+    flex-direction:  column;
+    width: 96%;
+    margin: 1rem auto 0 auto;
+}
+
+.main-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+input {
+    margin: 5px auto;
+}
+
+.personal-form,
+.address-form,
+.interests-form {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    height: auto;
+    align-items: center;
+}
+
+.address-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.address-form > * {
+    text-align: center;
+}
+
+.interests-form{
+    height: auto;
+}
+
+.interests-form-input {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 90%;
+}
+
+.interests-form-input > * {
+    width: 80%;
+    margin: 10px auto;
+}
+
+.form-controls{
+    border: 1px solid black;
+}
+
+.interests-controls {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    border: 1px solid black;
+}
+
+.form-controls > *,
+.interests-controls > * {
+    height: 20%;
+    margin: .5rem;
+}
+
+@media screen and (max-width: 950px) {
+    .address-form {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 575px) {
+  
+}

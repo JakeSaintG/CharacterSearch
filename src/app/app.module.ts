@@ -16,7 +16,7 @@ import { AddPeopleComponent } from './people/sendPeople/addPeople.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

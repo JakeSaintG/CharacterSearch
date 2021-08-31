@@ -5,9 +5,9 @@
                 <div>
                     <div>
                         <input type="text"
-                            [(ngModel)]='listFilter'>
+                            [(ngModel)]='listFilter' [(ngModel)] = "input">
                     </div>
-                    <button (click)="fetchWithDelay()">Search</button>
+                    <button (click)="fetchWithDelay()" >Search</button>
                 </div>
                 <div>    
                     <label for="delaySlider">Delay Search (in seconds):</label><br>
@@ -17,6 +17,12 @@
             <h4>Search by name: {{listFilter}}</h4>
         </div>
 
+        <div class = 'prompt'>
+            <div *ngIf='people.length == 0 && hideLoad == true'>
+                <h3>The person that you searched for cannot be found!</h3>
+                <p >You can add them or check your spelling.</p>
+            </div>
+        </div>
         <table class='people-table' *ngIf='people.length'>
             <thead>
                 <tr>
@@ -28,9 +34,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr [hidden]="hideLoad">
-                    loading
-                </tr>
+
                 <tr *ngFor = 'let people of people'>
                     <td>
                         <img [src]="people.image" alt="Picture of {{people.image}}"
