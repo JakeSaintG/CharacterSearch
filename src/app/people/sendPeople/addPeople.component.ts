@@ -3,6 +3,7 @@ import { Observable, throwError } from "rxjs";
 import { tap, catchError} from "rxjs/operators";
 import { IPostUser, IUserAddress } from "./postUser";
 import { HttpClient, HttpEvent, HttpErrorResponse, HttpEventType } from  '@angular/common/http';
+import { PostImage } from "./addPeople.service";
 
 @Component({
     selector: `ps-addPeople`,
@@ -59,7 +60,7 @@ export class AddPeopleComponent {
         this._interestCount = value;
     }
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private fileUploadService: PostImage) {}
 
     //Generates a unique userID that will be used to connect the person to their image on the backend.
     generateUserId = () => {
@@ -98,15 +99,19 @@ export class AddPeopleComponent {
         this.postUserImage = this.initUserImage;
     }
 
+    fileToUpload: File | any = null;
+    handleFileInput(files: FileList | any) {
+        // this.fileToUpload = files.item(0); <==========Recommended but: gave ".item() is not a function" error
+        this.fileToUpload = files.item[0];
+    }
+    
+    
     //Posts uploaded image to PeopleAPI
     postUserImg = () => { 
-        if(!this.postUserImage) return;
-        let imageUrl = "http://localhost:5000/PeopleImage/";
-        let postImg = this.http.post(imageUrl, this.postUserImage).pipe(
-            catchError(this.handleError)  
-        );
-        postImg.subscribe({
-            error: err => {this.errorMessage = err}
+        this.fileUploadService.postFile(this.fileToUpload).subscribe(data => {
+            console.log("Image uploaded!");// do something, if upload success
+        }, error => {
+            console.log(error);
         });
 
         /*========================================================================
@@ -114,6 +119,7 @@ export class AddPeopleComponent {
         Must also rename image to the unique userID (this.postUserId) to be matched later.
         ========================================================================*/
     }
+    
 
     //Posts entered Person to PeopleAPI
     postUser = () => {  
