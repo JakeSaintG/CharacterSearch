@@ -1,6 +1,6 @@
 <div class="add-people">
     <form class="main-form" action="" *ngIf="displayForm">
-        <h4>Name and Birthday:</h4>
+        <h4 class="form-label-seperator">Name and Birthday:</h4>
         <form class= "personal-form" action="" >
             <span>
                 <label for="add-person-name">Name: </label>
@@ -13,7 +13,7 @@
             </span>
 
         </form>
-        <h4>Address:</h4>
+        <h4 class="form-label-seperator">Address:</h4>
         <form class="address-form" action="">
             <span>
                 <label for="add-person-street">Street: </label>
@@ -32,7 +32,7 @@
                 <input type="number" name="zip" id="add-person-zip" [(ngModel)]="postUserZip">
             </span>
         </form>
-        <h4>Interests:</h4>
+        <h4 class="form-label-seperator">Interests:</h4>
         <form class="interests-form" action="">
             <div class="interests-form-input">
                 <input type="text" name="interest" *ngFor = "let interest of interestCount; let i=index" [(ngModel)]="postUserInterests[i]" value="postUserInterests[i]">
@@ -42,8 +42,8 @@
                 <button (click)="removeInterest()" [disabled]="interestCount.length <= 1">Remove</button>
             </div>            
         </form>
-        <h4>Add picture:</h4>
-        <form>
+        <h4 class="form-label-seperator">Add picture:</h4>
+        <form class="upload-form">
             <label for="picture-form-input">Upload Photo: </label>
             <input type="file" name="Upload photo" id="picture-form-input" accept=".webp,.png,.jpg" [(ngModel)]="postUserImage">
         </form>

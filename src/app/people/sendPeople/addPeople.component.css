@@ -9,21 +9,31 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 input {
     margin: 5px auto;
 }
 
+.form-label-seperator {
+    background-color: brown;
+    margin: 0;
+    padding: 0.5rem 0 0.5rem 0.5rem;
+    color: cornsilk;
+}
+
 .personal-form,
 .address-form,
-.interests-form {
+.interests-form,
+.upload-form {
     display: flex;
+    padding: 0.5rem;
     justify-content: space-between;
-    border: 1px solid black;
+    border-top: 1px solid black;
     height: auto;
     align-items: center;
+    background-color: #f3efe6;
 }
 
 .address-form {
@@ -50,15 +60,15 @@ input {
     margin: 10px auto;
 }
 
-.form-controls{
-    border: 1px solid black;
-}
+/* .form-controls{
+    border-top: 1px solid black;
+} */
 
 .interests-controls {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 10%;
-    border: 1px solid black;
+    /* border-top: 1px solid black; */
 }
 
 .form-controls > *,
