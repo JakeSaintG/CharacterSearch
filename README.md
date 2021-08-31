@@ -14,6 +14,11 @@ ng build
 ```
 
 ## To Run
+- Make sure that you have @angular-devkit/build-angular installed.
+-- If the application fails to build, run the below command:
+```sh
+npm install --save-dev @angular-devkit/build-angular
+```
 - Navigate to your terminal of choice (PowerShell, Git Bash, and Visual Studio were all tested)
 - Enter the below line:
 ```sh
