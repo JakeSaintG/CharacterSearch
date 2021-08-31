@@ -17,11 +17,11 @@ export class PostImage {
         [header: string]: string | string[];
     } | undefined
 
-    postFile(fileToUpload: File): Observable<boolean> {
+    postFile(fileToUpload: File | Blob): Observable<boolean> {
         const endpoint = 'http://localhost:5000/PeopleImage/';
         const formData: FormData = new FormData();
 
-        formData.append('fileKey', fileToUpload, fileToUpload.name);
+        formData.append('fileKey', fileToUpload, 'test.jpg');
         return this.http
           .post(endpoint, formData, { headers: this.headersConfig })
             .pipe(map(() => {return true;}))

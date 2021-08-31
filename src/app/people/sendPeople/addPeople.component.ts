@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { tap, catchError} from "rxjs/operators";
 import { IPostUser, IUserAddress } from "./postUser";
@@ -99,27 +99,29 @@ export class AddPeopleComponent {
         this.postUserImage = this.initUserImage;
     }
 
-    fileToUpload: File | any = null;
+    fileToUpload!: File | Blob;
     handleFileInput(event: any) {
-        // files: FileList | any
-        
-        let files = event.value;
-        console.log(files);
+        let file = event.target.files[0];
+        console.log(file);
 
-        
-
-        this.fileToUpload = files;
+        this.fileToUpload = file;
+        console.log(this.fileToUpload);
     }
     
     
     //Posts uploaded image to PeopleAPI
     postUserImg = () => { 
-        this.fileUploadService.postFile(this.fileToUpload).subscribe(data => {
-            console.log("Image uploaded!");// do something, if upload success
-        }, error => {
-            console.log(error);
-        });
-
+        console.log(this.fileToUpload)
+        if (this.fileToUpload=== undefined) {
+            return;
+        } else {
+            this.fileUploadService.postFile(this.fileToUpload).subscribe(data => {
+                console.log("Image uploaded!");// do something, if upload success
+            }, error => {
+                console.log(error);
+            });
+        }
+        
         /*========================================================================
         Not currently functional
         Must also rename image to the unique userID (this.postUserId) to be matched later.
