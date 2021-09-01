@@ -9,7 +9,7 @@
 }
 
 button {
-	box-shadow:inset 0px 30px 0px -15px #b54b3a;
+	box-shadow:inset 0px 30px 0px -15px #b54b3a; 
 	background-color:brown;
 	border:1px solid black;
 	cursor:pointer;

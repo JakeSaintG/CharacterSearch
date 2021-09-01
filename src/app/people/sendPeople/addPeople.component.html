@@ -11,7 +11,6 @@
                 <label for="add-person-bday">Birthday: </label>
                 <input type="date" name="birthday" id="add-person-bday" [(ngModel)]="postUserBirthdate">
             </span>
-
         </form>
         <h4 class="form-label-seperator">Address:</h4>
         <form class="address-form" action="">
@@ -42,8 +41,7 @@
                 <button (click)="removeInterest()" [disabled]="interestCount.length <= 1">Remove</button>
             </div>            
         </form>
-        <h4 class="form-label-seperator">Add picture:</h4>
-           
+        <h4 class="form-label-seperator">Add picture:</h4> 
         <div class="upload-form">
             <label for="file">Choose File</label>
             <input type="file"

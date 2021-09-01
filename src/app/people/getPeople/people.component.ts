@@ -17,7 +17,7 @@ export class PeopleListComponent implements OnInit {
     people: IPeople[] = [];
     errorMessage: string = '';
     input: string = '';
-    loadingProgress: string = 'animation: progressBar 3s ease-in-out;';
+    loadingProgress: string = ''; 
     private peopleAPIUrl: string = 'http://localhost:5000/people/';
     constructor(private http: HttpClient) {}
 
