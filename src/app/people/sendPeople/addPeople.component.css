@@ -35,6 +35,10 @@ input {
     background-color: #f3efe6;
 }
 
+.upload-form{
+    display: block;
+}
+
 .address-form {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
