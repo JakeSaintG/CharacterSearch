@@ -42,6 +42,9 @@ th {
     height: 40px;
 }
 
+td {
+    text-align: center;
+}
 
 table,
 tr,
@@ -86,6 +89,7 @@ th {
 .person-interests{
     list-style: none;
     padding: 0;
+    text-align: left;
 }
 
 .person-interests > * {
