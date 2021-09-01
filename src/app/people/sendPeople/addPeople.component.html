@@ -8,7 +8,7 @@
                 <label for="add-person-name">Name: </label>
                 <input type="text" name="name" id="add-person-name" [(ngModel)]="postUserName">      
             </span>
-            <p *ngIf="displayWarning">*Name is required!</p>
+            <p *ngIf="displayWarning">*Name is required!</p> 
             <span>
                 <label for="add-person-bday">Birthday: </label>
                 <input type="date" name="birthday" id="add-person-bday" [(ngModel)]="postUserBirthdate" max="{{today | date:'yyyy-MM-dd'}}">
@@ -50,6 +50,7 @@
                     id="fileUpload"
                     name="fileUpload"            
                     (change)="handleFileInput($event)"
+                    [(ngModel)]="postUserImage"
                     >           
         </div>
     </form>

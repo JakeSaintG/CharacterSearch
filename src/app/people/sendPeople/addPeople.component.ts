@@ -115,7 +115,6 @@ export class AddPeopleComponent {
     
     //Posts uploaded/stored image to PeopleAPI.
     postUserImg = () => { 
-        console.log(this.fileToUpload)
         if (this.fileToUpload=== undefined) {
             return;
         } else {
@@ -127,7 +126,6 @@ export class AddPeopleComponent {
         }
     }
     
-
     //Posts entered Person information to PeopleAPI when the user submits it.
     postUser = () => {  
         if(!this.postUserName) {

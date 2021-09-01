@@ -48,6 +48,7 @@ ng test
 - Sending images works but sends 200 back from the API as an error code
 
 ## Areas of Improvement
-- Changing many of the uses of "people" to "user" throughout the application.
+- Changing many of the uses of "people" to "user" throughout the application code.
+- Showing a success notification if the person data was uploaded successfully.
 - Utilizing Angular's ReactiveFormsModule to create the form for adding a person.
 - Deliving deeper in the features of Angular and refactoring.
