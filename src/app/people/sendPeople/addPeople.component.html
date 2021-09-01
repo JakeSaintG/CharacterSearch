@@ -9,7 +9,7 @@
             <p *ngIf="displayWarning">*Name is required!</p>
             <span>
                 <label for="add-person-bday">Birthday: </label>
-                <input type="date" name="birthday" id="add-person-bday" [(ngModel)]="postUserBirthdate">
+                <input type="date" name="birthday" id="add-person-bday" [(ngModel)]="postUserBirthdate" max="{{today | date:'yyyy-MM-dd'}}">
             </span>
         </form>
         <h4 class="form-label-seperator">Address:</h4>
@@ -48,8 +48,7 @@
                     id="fileUpload"
                     name="fileUpload"            
                     (change)="handleFileInput($event)"
-                    >
-                    
+                    >           
         </div>
     </form>
     <div class="form-controls">

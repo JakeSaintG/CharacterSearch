@@ -18,6 +18,8 @@ export class PeopleListComponent implements OnInit {
     errorMessage: string = '';
     input: string = '';
     loadingProgress: string = ''; 
+    today: Date = new Date();
+    postUserAges:number[] = [];
     private peopleAPIUrl: string = 'http://localhost:5000/people/';
     constructor(private http: HttpClient) {}
 
@@ -44,11 +46,24 @@ export class PeopleListComponent implements OnInit {
         this.displayLoading()
     };
 
+    //set ages based on date string.
+    getAge = (birthday: string) => {
+        var today = this.today;
+        var birthDate = new Date(birthday);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+        {
+            age--;
+        }       
+        return age;
+    }
+
     //Sets slider value to seconds and sets the animation length
     changeDelay(e: any) {
         var delayInSeconds: number = e.target.value * 1000;
-        var foo = `animation: progress-bar ${e.target.value}s ease-in-out;`;
-        this.loadingProgress = foo;
+        var loadingAnimation = `animation: progress-bar ${e.target.value}s ease-in-out;`;
+        this.loadingProgress = loadingAnimation;
         this.delay = delayInSeconds;
     }
     
@@ -68,7 +83,7 @@ export class PeopleListComponent implements OnInit {
         console.log(`Delayed by: ${this.delay} milliseconds`);
         let fullUrl = this.peopleAPIUrl + this.input;
         let getPeople = this.http.get<IPeople[]>(fullUrl).pipe(
-            //tap(data => console.log('All: ', JSON.stringify(data))),
+            // tap(data => console.log('All: ', JSON.stringify(data))),
             catchError(this.handleError)  
         );
         getPeople.subscribe({

@@ -51,7 +51,10 @@
                     </td>
                     <td class="person-name">{{people.name | titlecase}}</td>
                     <!-- TODO: build a custom pipe to handle "St. Germain" and McCartney-->
-                    <td>{{people.birthDate | date:'mediumDate'}}</td>
+                    <td>
+                        <div>{{people.birthDate | date:'mediumDate'}}</div>
+                        <div>Age: {{getAge(people.birthDate)}}</div>
+                    </td>
                     <td class="person-address">
                         <div>
                             {{people.address.street}} <br>

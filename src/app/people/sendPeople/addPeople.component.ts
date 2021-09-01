@@ -33,8 +33,8 @@ export class AddPeopleComponent {
     postUserZip:number = this.initUserZip;
     postUserInterests:string[] = this.initUserInterests;
     postUserImage:File = this.initUserImage;
-    postUserAddress:IUserAddress = {street: this.postUserStreet,"city": this.postUserCity, "state": this.postUserState, "zip": this.postUserZip};
-    people: IPostUser = {id: this.postUserId, name: this.postUserName, birthDate: this.postUserBirthdate, address: this.postUserAddress, "interests":this.postUserInterests}
+    // postUserAddress:IUserAddress = {street: this.postUserStreet,"city": this.postUserCity, "state": this.postUserState, "zip": this.postUserZip};
+    people: IPostUser = {id: this.postUserId, name: this.postUserName, birthDate: this.postUserBirthdate, address: {street: this.postUserStreet,"city": this.postUserCity, "state": this.postUserState, "zip": this.postUserZip}, "interests":this.postUserInterests}
     
     //For displaying "name is required"
     displayWarning: boolean = false;
@@ -42,6 +42,8 @@ export class AddPeopleComponent {
     showOrHide: string = "Add User";
     //For displaying error message.
     errorMessage: string = '';
+
+    today: Date = new Date();
 
     //Getter and Setter for displaying user input
     private _displayForm: boolean = false;
@@ -137,12 +139,12 @@ export class AddPeopleComponent {
         
         let fullUrl:string = "http://localhost:5000/people/";
         this.people.id = this.postUserId;
-        this.people.name = this.postUserName;
+        this.people.name = this.postUserName.toLowerCase();
         this.people.birthDate = this.postUserBirthdate;
-        this.postUserAddress.street = this.postUserStreet;
-        this.postUserAddress.city = this.postUserCity;
-        this.postUserAddress.state = this.postUserState;
-        this.postUserAddress.zip = this.postUserZip;
+        this.people.address.street = this.postUserStreet;
+        this.people.address.city = this.postUserCity;
+        this.people.address.state = this.postUserState;
+        this.people.address.zip = this.postUserZip;
         this.people.interests = this.postUserInterests;
 
         let postUser = this.http.post(fullUrl, this.people).pipe(

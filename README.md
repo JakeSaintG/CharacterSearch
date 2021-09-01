@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Angular Command Line Interface
 
 ## Build
-Run the below command to build the project. The build artifacts will be stored in the `dist/` directory.
+Run the below command to build the project.
 ```sh
 ng build
 ```
@@ -45,10 +45,9 @@ ng test
 - Peter McClanahan and Robyn Cute for answering my questions!
 
 ## Known Issues
-- Unable to POST an image currently.
--- Error received from API.
+- Sending images works but sends 200 back from the API as an error code
 
 ## Areas of Improvement
-- Changing many of the uses of "people" to "user" throught the application.
+- Changing many of the uses of "people" to "user" throughout the application.
 - Utilizing Angular's ReactiveFormsModule to create the form for adding a person.
 - Deliving deeper in the features of Angular and refactoring.
