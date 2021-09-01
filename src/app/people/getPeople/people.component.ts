@@ -46,6 +46,7 @@ export class PeopleListComponent implements OnInit {
         this.displayLoading()
     };
 
+
     //set ages based on date string.
     getAge = (birthday: string) => {
         var today = this.today;
@@ -88,7 +89,7 @@ export class PeopleListComponent implements OnInit {
         );
         getPeople.subscribe({
             next: people => {this.people = people},
-            complete: this.displayLoading,
+            complete: this.displayLoading, 
             error: err => {this.errorMessage = err, this.displayLoading()}
         });
     };

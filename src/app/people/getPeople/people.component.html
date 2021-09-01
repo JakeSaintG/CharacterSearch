@@ -59,8 +59,8 @@
                     </td>
                     <td class="person-address">
                         <div>
-                            {{people.address.street}} <br>
-                            {{people.address.city}}, {{people.address.state}} <br>
+                            {{people.address.street | titlecase}} <br>
+                            {{people.address.city | titlecase}} {{people.address.state | titlecase}} <br>
                             {{people.address.zip}}
                         </div>
                     </td>
