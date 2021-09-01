@@ -97,8 +97,9 @@ export class PeopleListComponent implements OnInit {
         if (err.error instanceof ErrorEvent) {
             this.errorMessage = `An error occured: ${err.error.message}`;
         } else {
-            this.errorMessage = `Server returned code: ${err.status}, error message is ${err.message}`;         
+            this.errorMessage = `Server returned code: ${err.status}, error message is ${err.message}`;       
         }
+        
         console.error(this.errorMessage);
         return throwError(this.errorMessage);
     }

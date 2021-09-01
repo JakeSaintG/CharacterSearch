@@ -42,8 +42,10 @@ export class AddPeopleComponent {
     showOrHide: string = "Add User";
     //For displaying error message.
     errorMessage: string = '';
-
+    //For setting a person's age based on today's date.
     today: Date = new Date();
+    //Stores the uploaded photo for sending to PeopleAPI
+    fileToUpload!: File | Blob;
 
     //Getter and Setter for displaying user input
     private _displayForm: boolean = false;
@@ -54,6 +56,7 @@ export class AddPeopleComponent {
         this._displayForm = value;
     }
     
+    //Getter and Setter for how many interest boxes will be displayed.
     private _interestCount: number[] = [1];   
     get interestCount(): number[] {
         return this._interestCount;
@@ -85,7 +88,6 @@ export class AddPeopleComponent {
     addInterest = () => {
         this.interestCount.push(1);
     }
-
     removeInterest = () => {       
         this.interestCount.pop();
     }
@@ -100,43 +102,38 @@ export class AddPeopleComponent {
         this.postUserState = this.initUserState;
         this.postUserZip = this.initUserZip;
         this.postUserInterests = this.initUserInterests;
+        this.postUserInterests[0] = "";
         this.postUserImage = this.initUserImage;
     }
 
-    fileToUpload!: File | Blob;
+    //Gets the file from the input based on the event target.
+    //Sets it to be stored until the user makes a submission
     handleFileInput(event: any) {
         this.fileToUpload = event.target.files[0];
-        console.log(this.fileToUpload);
     }
     
     
-    //Posts uploaded image to PeopleAPI
+    //Posts uploaded/stored image to PeopleAPI.
     postUserImg = () => { 
         console.log(this.fileToUpload)
         if (this.fileToUpload=== undefined) {
             return;
         } else {
             this.fileUploadService.postFile(this.fileToUpload, this.generateUserId()).subscribe(data => {
-                console.log("Image uploaded!");// do something, if upload success
+                console.log("Image uploaded!");//if upload success
             }, error => {
                 console.log(error);
             });
         }
-        
-        /*========================================================================
-        Not currently functional
-        Must also rename image to the unique userID (this.postUserId) to be matched later.
-        ========================================================================*/
     }
     
 
-    //Posts entered Person to PeopleAPI
+    //Posts entered Person information to PeopleAPI when the user submits it.
     postUser = () => {  
         if(!this.postUserName) {
             this.displayWarning = true;
             return
-        };
-        
+        };    
         let fullUrl:string = "http://localhost:5000/people/";
         this.people.id = this.postUserId;
         this.people.name = this.postUserName.toLowerCase();
@@ -155,7 +152,7 @@ export class AddPeopleComponent {
         postUser.subscribe({
             error: err => {this.errorMessage = err}
         });
-
+        //Reset the fields on the form.
         this.setFieldsToinit();
     };
 

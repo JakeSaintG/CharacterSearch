@@ -10,13 +10,13 @@ import { Injectable, Input } from "@angular/core";
 
 export class PostImage {
     errorMessage: string = '';
-
     constructor(private http: HttpClient) {}
 
     headersConfig: HttpHeaders | {
         [header: string]: string | string[];
     } | undefined
 
+    //Posts an image file to PeopleAPI
     postFile(fileToUpload: File | Blob, photoID:number): Observable<boolean> {
         const endpoint = 'http://localhost:5000/PeopleImage/';
         const formData: FormData = new FormData();

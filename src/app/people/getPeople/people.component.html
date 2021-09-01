@@ -22,9 +22,11 @@
         </div>
 
         <div class = 'prompt'>
-            <div *ngIf='people.length == 0 && hideLoad == true'>
+            <div *ngIf='people.length === 0 && hideLoad === true'>
                 <h3>The person that you searched for cannot be found!</h3>
                 <p >You can add them or check your spelling.</p>
+                <p >If you are concerned about a connection issue, please ensure that <br>
+                    PeopleAPI is running on "http://localhost:5000/people"</p>
             </div>
             <div [hidden]="hideLoad">
                 <div class="progress-bar">
@@ -50,7 +52,7 @@
                         class = "person-image">
                     </td>
                     <td class="person-name">{{people.name | titlecase}}</td>
-                    <!-- TODO: build a custom pipe to handle "St. Germain" and McCartney-->
+                    <!-- TODO: build a custom pipe to handle displaying "St. Germain", "McCartney", "O'Brien"-->
                     <td>
                         <div>{{people.birthDate | date:'mediumDate'}}</div>
                         <div>Age: {{getAge(people.birthDate)}}</div>
