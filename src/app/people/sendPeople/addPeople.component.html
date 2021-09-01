@@ -17,25 +17,25 @@
         <form class="address-form" action="">
             <span>
                 <label for="add-person-street">Street: </label>
-                <input type="text" name="street-address" id="add-person-street" [(ngModel)]="postUserStreet">
+                <input type="text" name="street-address" id="add-person-street" [(ngModel)]="postUserStreet" maxlength="25">
             </span>
             <span>
                 <label for="add-person-city">City: </label>
-                <input type="text" name="city-address" id="add-person-city" [(ngModel)]="postUserCity">
+                <input type="text" name="city-address" id="add-person-city" [(ngModel)]="postUserCity" maxlength="25">
             </span>
             <span>
                 <label for="add-person-state">State: </label>
-                <input type="text" name="state-address" id="add-person-state" [(ngModel)]="postUserState">
+                <input type="text" name="state-address" id="add-person-state" [(ngModel)]="postUserState" maxlength="20">
             </span>
             <span>
                 <label for="add-person-zip">Zip: </label>
-                <input type="number" name="zip" id="add-person-zip" [(ngModel)]="postUserZip">
+                <input type="number" name="zip" id="add-person-zip" [(ngModel)]="postUserZip" maxlength="10">
             </span>
         </form>
         <h4 class="form-label-seperator">Interests:</h4>
         <form class="interests-form" action="">
             <div class="interests-form-input">
-                <input type="text" name="interest" *ngFor = "let interest of interestCount; let i=index" [(ngModel)]="postUserInterests[i]" value="postUserInterests[i]">
+                <input type="text" name="interest" *ngFor = "let interest of interestCount; let i=index" [(ngModel)]="postUserInterests[i]" value="postUserInterests[i]" maxlength="60">
             </div>
             <div class="interests-controls">
                 <button (click)="addInterest()" [disabled]="interestCount.length >= 8">Add</button>

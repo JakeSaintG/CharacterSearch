@@ -1,19 +1,45 @@
+.search-head{
+    margin: 0;
+}
+
+.search-for-people {
+    height: 27px;
+    padding-right: 15px;
+    margin-right: 15px;
+}
+
 button {
-	box-shadow:inset 0px 34px 0px -15px #b54b3a;
+	box-shadow:inset 0px 30px 0px -15px #b54b3a;
 	background-color:brown;
-	border:1px solid #241d13;
-	display:inline-block;
+	border:1px solid black;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
+	font-size:13px;
 	font-weight:bold;
-	padding: 4px 23px;
+	padding: 5px 23px;
 	text-decoration:none;
 	text-shadow:0px -1px 0px #7a2a1d;
 }
 button:hover {
 	background-color:#b34332;
+}
+
+.delay-slider {
+    background-color: brown;
+}
+
+.person-name {
+    font-weight: bold;
+}
+
+thead {
+    background-color: brown;
+    color:rgb(253, 251, 241);
+    font-size: large;
+}
+
+th {
+    height: 40px;
 }
 
 
@@ -75,29 +101,29 @@ th {
     text-transform: capitalize
 }
 
-.searchControlsContainer{
+.search-controls-container{
     width: 96%;
     margin: 1rem auto 0 auto;
 }
 
-.searchControls,
-.searchControls > * {
+.search-controls,
+.search-controls > * {
     display: flex;
     align-items: center;
 }
 
-.searchControls {
+.search-controls {
     justify-content: space-between;
 }
 
-.progressBar { 
+.progress-bar { 
     height: 15px;
     position: relative;
     background: #f3efe6;
     overflow: hidden;
 }
 
-.progressBar span {
+.progress-bar span {
     display: block;
     height: 100%;
     width: 100%;
@@ -108,7 +134,7 @@ th {
     animation-fill-mode:both; 
 }
 
-@keyframes progressBar {
+@keyframes progress-bar {
   0% { width: 0; }
   100% { width: 100%; }
 }

@@ -47,7 +47,7 @@ export class PeopleListComponent implements OnInit {
     //Sets slider value to seconds and sets the animation length
     changeDelay(e: any) {
         var delayInSeconds: number = e.target.value * 1000;
-        var foo = `animation: progressBar ${e.target.value}s ease-in-out;`;
+        var foo = `animation: progress-bar ${e.target.value}s ease-in-out;`;
         this.loadingProgress = foo;
         this.delay = delayInSeconds;
     }

@@ -2,8 +2,6 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
-
 .title {
     display: flex;
     flex-direction: column;
@@ -11,8 +9,7 @@
 }
 
 .disclaimer{
-    color:rgb(253, 251, 241);
-    
+    color:rgb(253, 251, 241); 
 }
 
 .welcome {
@@ -28,5 +25,20 @@
 }
 
 .spacer img {
-    margin-right: 5px;
+    margin-right: 15px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 745px) {
+    .spacer {
+        width: 55px;
+    }
+    
+    .spacer img {
+        margin-right: 0px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+  
 }

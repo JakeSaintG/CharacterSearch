@@ -1,20 +1,24 @@
 <div class='peopleTable'>
     <div class=''>
-        <div class='searchControlsContainer'>
-            <div class='searchControls'>
+        <div class='search-controls-container'>
+            <h4 class="search-head">Search by name: {{listFilter}}</h4>
+            <div class='search-controls'>
                 <div>
                     <div>
-                        <input class ="search-for-people" type="text"
-                            [(ngModel)]='listFilter' [(ngModel)] = "input">
+                        <input class ="search-for-people" 
+                            type="text"
+                            [(ngModel)]='listFilter' 
+                            [(ngModel)] = "input"
+                            maxlength="35">
                     </div>
                     <button (click)="fetchWithDelay()" >Search</button>
                 </div>
                 <div>    
-                    <label for="delaySlider">Delay Search (in seconds):</label><br>
+                    <label for="delay-slider">Slow connection (in sec):</label><br>
                     <input type="range" min="0" max="5" value="0" class="slider" id="delaySlider" (input)="changeDelay($event)">
                 </div>
             </div>
-            <h4>Search by name: {{listFilter}}</h4>
+            
         </div>
 
         <div class = 'prompt'>
@@ -23,7 +27,7 @@
                 <p >You can add them or check your spelling.</p>
             </div>
             <div [hidden]="hideLoad">
-                <div class="progressBar">
+                <div class="progress-bar">
                     <span><span class="progress" [style]='loadingProgress'></span></span>
                 </div>          
             </div>
@@ -46,7 +50,7 @@
                         [style.width.px]= 'imageWidth'
                         class = "person-image">
                     </td>
-                    <td>{{people.name | titlecase}}</td>
+                    <td class="person-name">{{people.name | titlecase}}</td>
                     <!-- TODO: build a custom pipe to handle "St. Germain" and McCartney-->
                     <td>{{people.birthDate | date:'mediumDate'}}</td>
                     <td class="person-address">
