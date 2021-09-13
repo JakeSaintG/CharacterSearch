@@ -45,7 +45,7 @@ export class AddPeopleComponent {
     //For setting a person's age based on today's date.
     today: Date = new Date();
     //Stores the uploaded photo for sending to PeopleAPI
-    fileToUpload!: File | Blob;
+    fileToUpload!: File | Blob | undefined;
 
     //Getter and Setter for displaying user input
     private _displayForm: boolean = false;
@@ -104,6 +104,7 @@ export class AddPeopleComponent {
         this.postUserInterests = this.initUserInterests;
         this.postUserInterests[0] = "";
         this.postUserImage = this.initUserImage;
+        this.fileToUpload = undefined;
     }
 
     //Gets the file from the input based on the event target.
@@ -133,7 +134,11 @@ export class AddPeopleComponent {
             return
         };    
         let fullUrl:string = "http://localhost:5000/people/";
-        this.people.id = this.postUserId;
+        if (this.fileToUpload === undefined) {
+            this.people.id = this.generateUserId();
+        } else {
+            this.people.id = this.postUserId;
+        }
         this.people.name = this.postUserName.toLowerCase();
         this.people.birthDate = this.postUserBirthdate;
         this.people.address.street = this.postUserStreet;
