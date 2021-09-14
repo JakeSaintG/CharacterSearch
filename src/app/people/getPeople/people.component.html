@@ -11,15 +11,18 @@
                             [(ngModel)] = "input"
                             maxlength="35">
                     </div>
-                    <button (click)="fetchSpecified()" >Search</button>
-                    <button (click)="fetchAll()" >Pull all</button>
-                    <span [hidden] = "!displaySearchReq"> *Please enter a name</span>
+                    <div class="search-buttons">
+                        <button (click)="fetchSpecified()" >Search</button>
+                        <button (click)="fetchAll()" >Pull all</button>
+                        
+                    </div>
                 </div>
                 <div>    
                     <label for="delay-slider">Slow connection (in sec):</label><br>
                     <input type="range" min="0" max="5" value="0" class="slider" id="delaySlider" (input)="changeDelay($event)">
                 </div>
-            </div>            
+            </div> 
+            <span [hidden] = "!displaySearchReq"> *Please enter a name</span>           
         </div>
 
         <div class='prompt'>

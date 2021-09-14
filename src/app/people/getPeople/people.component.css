@@ -6,6 +6,8 @@
     height: 27px;
     padding-right: 15px;
     margin-right: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
 button {
@@ -118,7 +120,7 @@ th {
 }
 
 .search-controls {
-    justify-content: space-between;
+    justify-content: space-between; 
 }
 
 .progress-bar { 
@@ -145,8 +147,21 @@ th {
 }
 
 /* Responsive Styles */
-@media screen and (max-width: 767px) {
-    
+@media screen and (max-width: 745px) {
+    .search-controls > div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-controls > div > div:last-child {
+        display: flex;
+        flex-direction: row;    
+        padding-top: 5px
+    }
+    .search-controls > div > div:last-child > button {
+        margin-right: 7px;
+    }
 }
 
 @media screen and (max-width: 575px) {
