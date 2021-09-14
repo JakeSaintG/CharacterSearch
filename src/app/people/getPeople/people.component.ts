@@ -41,11 +41,20 @@ export class PeopleListComponent implements OnInit {
         this._delay = value;
     }
 
-    ngOnInit(): void {     
-        this.fetchPeople()
-        this.displayLoading()
+    //Displays or hides intro message
+    private _displayIntroMessage: boolean = true;
+    get displayIntroMessage(): boolean {
+        return this._displayIntroMessage;
     };
+    set displayIntroMessage(value: boolean){
+        this._displayIntroMessage = value;
+    }
 
+    ngOnInit(): void {     
+        // this.fetchPeople()
+        // this.displayLoading()
+        this.displayIntroMessage = true;
+    };
 
     //set ages based on date string.
     getAge = (birthday: string) => {
@@ -72,8 +81,24 @@ export class PeopleListComponent implements OnInit {
         this.hideLoad = !this.hideLoad;    
     };
 
+    fetchAll = () => {
+        this.input = "";
+        this.fetchWithDelay();
+    }
+    fetchSpecified = () => {
+        if (this.input === '') {
+            this.displaySearchReq = true;
+            return;
+        } else {
+            this.displaySearchReq = false;
+        }
+        this.fetchWithDelay();
+    }
+
+    displaySearchReq: boolean = false;
     //Calls fetchPeople() after being delayed.
-    fetchWithDelay = () =>{ 
+    fetchWithDelay = () =>{       
+        this.displayIntroMessage = false;
         this.displayLoading();
         this.people = [];
         setTimeout(this.fetchPeople, this.delay)    
@@ -97,8 +122,8 @@ export class PeopleListComponent implements OnInit {
     private handleError(err: HttpErrorResponse){
         if (err.error instanceof ErrorEvent) {
             this.errorMessage = `An error occured: ${err.error.message}`;
-        } else {
-            this.errorMessage = `Server returned code: ${err.status}, error message is ${err.message}`;       
+        } else {           
+            this.errorMessage = `Server returned code: ${err.status}, error message is ${err.message}`;           
         }
         
         console.error(this.errorMessage);

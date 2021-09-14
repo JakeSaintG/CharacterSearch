@@ -11,22 +11,27 @@
                             [(ngModel)] = "input"
                             maxlength="35">
                     </div>
-                    <button (click)="fetchWithDelay()" >Search</button>
+                    <button (click)="fetchSpecified()" >Search</button>
+                    <button (click)="fetchAll()" >Pull all</button>
+                    <span [hidden] = "!displaySearchReq"> *Please enter a name</span>
                 </div>
                 <div>    
                     <label for="delay-slider">Slow connection (in sec):</label><br>
                     <input type="range" min="0" max="5" value="0" class="slider" id="delaySlider" (input)="changeDelay($event)">
                 </div>
-            </div>
-            
+            </div>            
         </div>
 
-        <div class = 'prompt'>
-            <div *ngIf='people.length === 0 && hideLoad === true'>
+        <div class='prompt'>
+            <div *ngIf='people.length === 0 && hideLoad === true && displayIntroMessage === false'>
                 <h3>The person that you searched for cannot be found!</h3>
                 <p >You can add them or check your spelling.</p>
                 <p >If you are concerned about a connection issue, please ensure that <br>
                     PeopleAPI is running on "http://localhost:5000/people"</p>
+            </div>
+            <div *ngIf="displayIntroMessage">
+                <h3>Hello!</h3>
+                <p>Please search for a user in the searchbox above.</p>
             </div>
             <div [hidden]="hideLoad">
                 <div class="progress-bar">

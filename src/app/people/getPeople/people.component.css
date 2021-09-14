@@ -19,6 +19,7 @@ button {
 	padding: 5px 23px;
 	text-decoration:none;
 	text-shadow:0px -1px 0px #7a2a1d;
+    margin-right: 5px;
 }
 button:hover {
 	background-color:#b34332;
