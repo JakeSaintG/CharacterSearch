@@ -58,4 +58,5 @@
         <button *ngIf="displayForm" (click)="postUserImg()" (click)='postUser()'>Submit</button> 
         <button *ngIf="displayForm" (click)='fillUser()'>Auto fill</button>
     </div>
+    <div class="successful-upload" [hidden]="!successfulSubmission">Successfully Uploaded!</div>
 </div>

@@ -65,6 +65,14 @@ export class AddPeopleComponent {
         this._interestCount = value;
     }
 
+    private _successfulSubmission: boolean = false;   
+    get successfulSubmission(): boolean {
+        return this._successfulSubmission;
+    };
+    set successfulSubmission(value: boolean){
+        this._successfulSubmission = value;
+    };
+
     constructor(private http: HttpClient, private fileUploadService: PostImage) {}
 
     //Generates a unique userID that will be used to connect the person to their image on the backend.
@@ -127,6 +135,13 @@ export class AddPeopleComponent {
         }
     }
     
+    showSuccess = () => {
+        this.successfulSubmission = !this.successfulSubmission;
+        setTimeout(() => {
+            this.successfulSubmission = !this.successfulSubmission;
+        }, 5000);
+    }
+    
     //Posts entered Person information to PeopleAPI when the user submits it.
     postUser = () => {  
         if(!this.postUserName) {
@@ -153,6 +168,7 @@ export class AddPeopleComponent {
         );
 
         postUser.subscribe({
+            complete: this.showSuccess,
             error: err => {this.errorMessage = err}
         });
         //Reset the fields on the form.

@@ -76,7 +76,31 @@ input {
 }
 
 .form-controls {
+    margin-bottom: 16px;
+}
+
+.successful-upload{
+    background-color: green;
+    color:rgb(253, 251, 241);
+    font-weight: bold;
     margin-bottom: 50px;
+    border: 1px solid black;
+    text-align: center;
+    padding: 0.5rem 0;
+
+    animation-fill-mode: forwards;
+    animation-name: fadeIn, fadeOut;
+    animation-delay: 0s, 2s;
+    animation-duration: 1s;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes fadeOut {
+    0% {opacity:1;}
+    100% {opacity:0;}
 }
 
 button {
