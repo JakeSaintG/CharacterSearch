@@ -20,7 +20,6 @@ export class PostImage {
     postFile(fileToUpload: File | Blob, photoID:number): Observable<boolean> {
         const endpoint = 'http://localhost:5000/PeopleImage/';
         const formData: FormData = new FormData();
-        console.log(photoID)
         formData.append('files', fileToUpload, `${photoID}.webp`);
         return this.http
           .post(endpoint, formData, { headers: this.headersConfig })

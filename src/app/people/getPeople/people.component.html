@@ -48,34 +48,38 @@
                     <th>Image</th>
                     <th>Name</th>
                     <th>Birthday</th>
-                    <th>Address</th>
-                    <th>Interests</th>                   
+                    <!-- <th>Address</th> -->
+                    <th>Interests</th>       
+                    <th>View Profile</th>            
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor = 'let people of people'>
+                <tr *ngFor = 'let person of people'>
                     <td>
-                        <img [src]="people.image" alt="Picture of {{people.name}}"
+                        <img [src]="person.image" alt="Picture of {{person.name}}"
                         [style.width.px]= 'imageWidth'
                         class = "person-image">
                     </td>
-                    <td class="person-name">{{people.name | titlecase}}</td>
+                    <td class="person-name">{{person.name | titlecase}}</td>
                     <!-- TODO: build a custom pipe to handle displaying "St. Germain", "McCartney", "O'Brien"-->
                     <td>
-                        <div>{{people.birthDate | date:'mediumDate'}}</div>
-                        <div>Age: {{getAge(people.birthDate)}}</div>
+                        <div>{{person.birthDate | date:'mediumDate'}}</div>
+                        <div>Age: {{getAge(person.birthDate)}}</div>
                     </td>
-                    <td class="person-address">
+                    <!-- <td class="person-address">
                         <div>
-                            {{people.address.street | titlecase}} <br>
-                            {{people.address.city | titlecase}} {{people.address.state | titlecase}} <br>
-                            {{people.address.zip}}
+                            {{person.address.street | titlecase}} <br>
+                            {{person.address.city | titlecase}} {{person.address.state | titlecase}} <br>
+                            {{person.address.zip}}
                         </div>
-                    </td>
+                    </td> -->
                     <td>
                         <ul class="person-interests" >
-                            <li *ngFor='let interest of people.interests'>{{interest}}</li>
+                            <li *ngFor='let interest of person.interests'>{{interest}}</li>
                         </ul>
+                    </td>
+                    <td>
+                        <button (click)="setServiceData(person)" [routerLink]="['/people', person.name]" >View</button>
                     </td>     
                 </tr>
             </tbody>

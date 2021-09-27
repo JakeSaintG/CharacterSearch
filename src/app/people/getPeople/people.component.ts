@@ -3,6 +3,7 @@ import { IPeople } from "./people";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from "rxjs";
 import { tap, catchError} from "rxjs/operators";
+import { SessionService } from "src/app/session-service.service";
 
 @Component({
     selector: `ps-people`,
@@ -21,7 +22,8 @@ export class PeopleListComponent implements OnInit {
     today: Date = new Date();
     postUserAges:number[] = [];
     private peopleAPIUrl: string = 'http://localhost:5000/people/';
-    constructor(private http: HttpClient) {}
+
+    constructor(private http: HttpClient, private sessionService:SessionService) {}
 
     //Getter and setter for displaying or hiding the loading bar
     private _hideLoad: boolean = true;
@@ -118,6 +120,10 @@ export class PeopleListComponent implements OnInit {
             error: err => {this.errorMessage = err, this.displayLoading()}
         });
     };
+
+    setServiceData(person:IPeople){
+        this.sessionService.setData(person)
+    }
 
     private handleError(err: HttpErrorResponse){
         if (err.error instanceof ErrorEvent) {

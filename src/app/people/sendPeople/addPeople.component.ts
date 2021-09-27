@@ -120,8 +120,7 @@ export class AddPeopleComponent {
     handleFileInput(event: any) {
         this.fileToUpload = event.target.files[0];
     }
-    
-    
+     
     //Posts uploaded/stored image to PeopleAPI.
     postUserImg = () => { 
         if (this.fileToUpload=== undefined) {
@@ -182,7 +181,7 @@ export class AddPeopleComponent {
             this.errorMessage = `Server returned code: ${err.status}, error message is ${err.message}`;         
         }
         console.error(this.errorMessage);
-        return throwError(this.errorMessage);
+        return throwError(this.errorMessage);  
     }
 
     //Allows the user to fill in most fields automatically for easy testing.
