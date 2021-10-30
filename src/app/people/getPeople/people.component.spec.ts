@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { IPeople } from './people';
+import { ICharacters } from './people';
 import { PeopleListComponent } from './people.component';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
@@ -17,8 +17,8 @@ describe('PeopleListComponent', () => {
     it(`should contain a list of people`, () => {
       const fixture = TestBed.createComponent(PeopleListComponent);
       const app = fixture.componentInstance;
-      const SUT: IPeople[] = [ ];
-      expect(app.people).toEqual(SUT); 
+      const SUT: ICharacters[] = [ ];
+      expect(app.characters).toEqual(SUT); 
     });
 
     it(`should return an accurate age`, () => {

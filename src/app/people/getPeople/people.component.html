@@ -5,7 +5,7 @@
             <div class='search-controls'>
                 <div>
                     <div>
-                        <input class ="search-for-people" 
+                        <input class ="search-for-character" 
                             type="text"
                             [(ngModel)]='listFilter' 
                             [(ngModel)] = "input"
@@ -26,11 +26,11 @@
         </div>
 
         <div class='prompt'>
-            <div *ngIf='people.length === 0 && hideLoad === true && displayIntroMessage === false'>
-                <h3>The person that you searched for cannot be found!</h3>
+            <div *ngIf='characters.length === 0 && hideLoad === true && displayIntroMessage === false'>
+                <h3>The character that you searched for cannot be found!</h3>
                 <p >You can add them or check your spelling.</p>
                 <p >If you are concerned about a connection issue, please ensure that <br>
-                    PeopleAPI is running on "http://localhost:5000/people"</p>
+                    the companion API is running on "http://localhost:5000/people"</p>
             </div>
             <div *ngIf="displayIntroMessage">
                 <h3>Hello!</h3>
@@ -42,7 +42,7 @@
                 </div>          
             </div>
         </div>
-        <table class='people-table' *ngIf='people.length'>
+        <table class='character-table' *ngIf='characters.length'>
             <thead>
                 <tr>
                     <th>Image</th>
@@ -54,32 +54,32 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor = 'let person of people'>
+                <tr *ngFor = 'let character of characters'>
                     <td>
-                        <img [src]="person.image" alt="Picture of {{person.name}}"
+                        <img [src]="character.image" alt="Picture of {{character.name}}"
                         [style.width.px]= 'imageWidth'
-                        class = "person-image">
+                        class = "character-image">
                     </td>
-                    <td class="person-name">{{person.name | titlecase}}</td>
+                    <td class="character-name">{{character.name | titlecase}}</td>
                     <!-- TODO: build a custom pipe to handle displaying "St. Germain", "McCartney", "O'Brien"-->
                     <td>
-                        <div>{{person.birthDate | date:'mediumDate'}}</div>
-                        <div>Age: {{getAge(person.birthDate)}}</div>
+                        <div>{{character.birthDate | date:'mediumDate'}}</div>
+                        <div>Age: {{getAge(character.birthDate)}}</div>
                     </td>
-                    <!-- <td class="person-address">
+                    <!-- <td class="character-address">
                         <div>
-                            {{person.address.street | titlecase}} <br>
-                            {{person.address.city | titlecase}} {{person.address.state | titlecase}} <br>
-                            {{person.address.zip}}
+                            {{character.address.street | titlecase}} <br>
+                            {{character.address.city | titlecase}} {{character.address.state | titlecase}} <br>
+                            {{character.address.zip}}
                         </div>
                     </td> -->
                     <td>
-                        <ul class="person-interests" >
-                            <li *ngFor='let interest of person.interests'>{{interest}}</li>
+                        <ul class="character-interests" >
+                            <li *ngFor='let interest of character.interests'>{{interest}}</li>
                         </ul>
                     </td>
                     <td>
-                        <button (click)="setServiceData(person)" [routerLink]="['/people', person.name]" >View</button>
+                        <button (click)="setServiceData(character)" [routerLink]="['/people', character.name]" >View</button>
                     </td>     
                 </tr>
             </tbody>
