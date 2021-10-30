@@ -1,14 +1,14 @@
-export interface IPeople {
+export interface ICharacters {
     id: number,
     name: string,
     birthDate: string,
-    address: IPeopleAddress,
+    address: ICharactersAddress,
     interests: string[],
     image: string
 
 }
 
-interface IPeopleAddress {
+interface ICharactersAddress {
     street: string,
     city: string,
     state: string,

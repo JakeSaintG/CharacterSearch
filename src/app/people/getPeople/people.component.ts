@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { IPeople } from "./people";
+import { ICharacters } from "./people";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from "rxjs";
 import { tap, catchError} from "rxjs/operators";
@@ -15,13 +15,13 @@ export class PeopleListComponent implements OnInit {
     pageTitle: string = `People List`;
     imageWidth: number =  60;
     listFilter: string = '';
-    people: IPeople[] = [];
+    characters: ICharacters[] = [];
     errorMessage: string = '';
     input: string = '';
     loadingProgress: string = ''; 
     today: Date = new Date();
     postUserAges:number[] = [];
-    private peopleAPIUrl: string = 'http://localhost:5000/people/';
+    private characterAPIUrl: string = 'http://localhost:5000/people/';
 
     constructor(private http: HttpClient, private sessionService:SessionService) {}
 
@@ -53,8 +53,6 @@ export class PeopleListComponent implements OnInit {
     }
 
     ngOnInit(): void {     
-        // this.fetchPeople()
-        // this.displayLoading()
         this.displayIntroMessage = true;
     };
 
@@ -98,31 +96,31 @@ export class PeopleListComponent implements OnInit {
     }
 
     displaySearchReq: boolean = false;
-    //Calls fetchPeople() after being delayed.
+    //Calls fetchCharacter() after being delayed.
     fetchWithDelay = () =>{       
         this.displayIntroMessage = false;
         this.displayLoading();
-        this.people = [];
-        setTimeout(this.fetchPeople, this.delay)    
+        this.characters = [];
+        setTimeout(this.fetchCharacter, this.delay)    
     }
 
     //Connects to PeopleAPI to get requested information.
-    fetchPeople = () => {   
+    fetchCharacter = () => {   
         console.log(`Delayed by: ${this.delay} milliseconds`);
-        let fullUrl = this.peopleAPIUrl + this.input;
-        let getPeople = this.http.get<IPeople[]>(fullUrl).pipe(
+        let fullUrl = this.characterAPIUrl + this.input;
+        let getCharacter = this.http.get<ICharacters[]>(fullUrl).pipe(
             // tap(data => console.log('All: ', JSON.stringify(data))),
             catchError(this.handleError)  
         );
-        getPeople.subscribe({
-            next: people => {this.people = people},
+        getCharacter.subscribe({
+            next: characters => {this.characters = characters},
             complete: this.displayLoading, 
             error: err => {this.errorMessage = err, this.displayLoading()}
         });
     };
 
-    setServiceData(person:IPeople){
-        this.sessionService.setData(person)
+    setServiceData(charcter:ICharacters){
+        this.sessionService.setData(charcter)
     }
 
     private handleError(err: HttpErrorResponse){

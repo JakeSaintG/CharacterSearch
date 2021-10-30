@@ -2,7 +2,7 @@
     margin: 0;
 }
 
-.search-for-people {
+.search-for-character {
     height: 27px;
     padding-right: 15px;
     margin-right: 15px;
@@ -31,7 +31,7 @@ button:hover {
     background-color: brown;
 }
 
-.person-name {
+.character-name {
     font-weight: bold;
 }
 
@@ -71,40 +71,40 @@ th {
     text-align: center;
 }
 
-.people-table {
+.character-table {
     border: 1px solid black;
     width: 96%;
     margin: 1rem auto;
     list-style: none;
 }
 
-.person-image {
+.character-image {
     border-radius: 30%;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
-.person-address {
+.character-address {
     width: 300px;
     margin: 0 auto;
 }
 
-.person-interests{
+.character-interests{
     list-style: none;
     padding: 0;
     text-align: left;
 }
 
-.person-interests > * {
+.character-interests > * {
     width: 100%;
     font-weight: bold;
 }
 
-.person-interests > *:nth-child(odd){
+.character-interests > *:nth-child(odd){
     background-color: rgb(229, 157, 157);
 }
 
-.person-interests > *:first-letter {
+.character-interests > *:first-letter {
     text-transform: capitalize
 }
 

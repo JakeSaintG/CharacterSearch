@@ -13,5 +13,5 @@ export class AppComponent implements AfterViewInit {
           .body.style.backgroundColor = 'rgb(253, 251, 241)';
   }
   
-  title: string = 'PeopleSearch';
+  title: string = 'Character Search';
 }

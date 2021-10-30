@@ -17,7 +17,7 @@ export class PostImage {
     } | undefined
 
     //Posts an image file to PeopleAPI
-    postFile(fileToUpload: File | Blob, photoID:number): Observable<boolean> {
+    postFile(fileToUpload: File, photoID:number): Observable<boolean> {
         const endpoint = 'http://localhost:5000/PeopleImage/';
         const formData: FormData = new FormData();
         formData.append('files', fileToUpload, `${photoID}.webp`);

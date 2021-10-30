@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { IPeople } from './people/getPeople/people';
+import { ICharacters } from './people/getPeople/people';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +9,14 @@ import { IPeople } from './people/getPeople/people';
 export class SessionService 
 // implements OnInit 
 {
-  person!:IPeople;  
+  person!:ICharacters;  
   constructor() { }
 
   // ngOnInit():void {
 
   // }
 
-  setData(person: IPeople){
+  setData(person: ICharacters){
     this.person = person;
     localStorage.setItem('personData', JSON.stringify(person))
   }

@@ -1,12 +1,12 @@
-export interface IPostUser {
+export interface IPostCharacter {
     id: number,
     name: string,
     birthDate: Date,
-    address: IUserAddress,
+    address: ICharacterAddress,
     interests: string[],
 }
 
-export interface IUserAddress {
+export interface ICharacterAddress {
     street: string,
     city: string,
     state: string,
