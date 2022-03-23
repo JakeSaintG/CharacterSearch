@@ -1,36 +1,36 @@
-<!-- This is the form for adding a new character to PeopleAPI -->
+<!-- This is the form for adding a new character to CharacterAPI -->
 
 <div class="add-characters">
     <form class="main-form" action="" *ngIf="displayForm">
         <h4 class="form-label-seperator">Name and Birthday:</h4>
-        <form class= "personal-form" action="" >
+        <form class= "add-character-form" action="" >
             <span>
-                <label for="add-person-name">Name: </label>
-                <input type="text" name="name" id="add-person-name" [(ngModel)]="postCharacterName">      
+                <label for="add-character-name">Name: </label>
+                <input type="text" name="name" id="add-character-name" [(ngModel)]="postCharacterName">      
             </span>
             <p *ngIf="displayWarning">*Name is required!</p> 
             <span>
-                <label for="add-person-bday">Birthday: </label>
-                <input type="date" name="birthday" id="add-person-bday" [(ngModel)]="postCharacterBirthdate" max="{{today | date:'yyyy-MM-dd'}}">
+                <label for="add-character-bday">Birthday: </label>
+                <input type="date" name="birthday" id="add-character-bday" [(ngModel)]="postCharacterBirthdate" max="{{today | date:'yyyy-MM-dd'}}">
             </span>
         </form>
         <h4 class="form-label-seperator">Address:</h4>
         <form class="address-form" action="">
             <span>
-                <label for="add-person-street">Street: </label>
-                <input type="text" name="street-address" id="add-person-street" [(ngModel)]="postCharacterStreet" maxlength="25">
+                <label for="add-character-street">Street: </label>
+                <input type="text" name="street-address" id="add-character-street" [(ngModel)]="postCharacterStreet" maxlength="25">
             </span>
             <span>
-                <label for="add-person-city">City: </label>
-                <input type="text" name="city-address" id="add-person-city" [(ngModel)]="postCharacterCity" maxlength="25">
+                <label for="add-character-city">City: </label>
+                <input type="text" name="city-address" id="add-character-city" [(ngModel)]="postCharacterCity" maxlength="25">
             </span>
             <span>
-                <label for="add-person-state">State: </label>
-                <input type="text" name="state-address" id="add-person-state" [(ngModel)]="postCharacterState" maxlength="20">
+                <label for="add-character-state">State: </label>
+                <input type="text" name="state-address" id="add-character-state" [(ngModel)]="postCharacterState" maxlength="20">
             </span>
             <span>
-                <label for="add-person-zip">Zip: </label>
-                <input type="number" name="zip" id="add-person-zip" [(ngModel)]="postCharacterZip" maxlength="10">
+                <label for="add-character-zip">Zip: </label>
+                <input type="number" name="zip" id="add-character-zip" [(ngModel)]="postCharacterZip" maxlength="10">
             </span>
         </form>
         <h4 class="form-label-seperator">Interests:</h4>

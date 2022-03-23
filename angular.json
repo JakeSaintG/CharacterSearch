@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "PeopleSearch": {
+    "CharacterSearch": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/PeopleSearch",
+            "outputPath": "dist/CharacterSearch",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -67,15 +67,15 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "PeopleSearch:build",
+            "browserTarget": "CharacterSearch:build",
             "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "PeopleSearch:build:production"
+              "browserTarget": "CharacterSearch:build:production"
             },
             "development": {
-              "browserTarget": "PeopleSearch:build:development"
+              "browserTarget": "CharacterSearch:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "PeopleSearch:build"
+            "browserTarget": "CharacterSearch:build"
           }
         },
         "test": {
@@ -106,5 +106,5 @@
       }
     }
   },
-  "defaultProject": "PeopleSearch"
+  "defaultProject": "CharacterSearch"
 }

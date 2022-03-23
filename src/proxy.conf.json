@@ -1,6 +1,6 @@
 {
     "/api": {
-      "target": "http://localhost:5000/people",
+      "target": "http://localhost:5000/character",
       "secure": true,
       "changeOrigin": false,
       "pathRewrite": {

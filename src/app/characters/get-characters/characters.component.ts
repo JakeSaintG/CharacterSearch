@@ -1,27 +1,27 @@
 import { Component, OnInit } from "@angular/core";
-import { ICharacters } from "./people";
+import { ICharacter } from "./character";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from "rxjs";
 import { tap, catchError} from "rxjs/operators";
 import { SessionService } from "src/app/session-service.service";
 
 @Component({
-    selector: `ps-people`,
-    templateUrl: `./people.component.html`,
-    styleUrls: ['./people.component.css']
+    selector: `ps-characters`,
+    templateUrl: `./characters.component.html`,
+    styleUrls: ['./characters.component.css']
 })
 
-export class PeopleListComponent implements OnInit {
-    pageTitle: string = `People List`;
+export class CharactersListComponent implements OnInit {
+    pageTitle: string = `Characters List`;
     imageWidth: number =  60;
     listFilter: string = '';
-    characters: ICharacters[] = [];
+    characters: ICharacter[] = [];
     errorMessage: string = '';
     input: string = '';
     loadingProgress: string = ''; 
     today: Date = new Date();
-    postUserAges:number[] = [];
-    private characterAPIUrl: string = 'http://localhost:5000/people/';
+    postCharacterAges:number[] = [];
+    private characterAPIUrl: string = 'http://localhost:5000/character/';
 
     constructor(private http: HttpClient, private sessionService:SessionService) {}
 
@@ -62,10 +62,9 @@ export class PeopleListComponent implements OnInit {
         var birthDate = new Date(birthday);
         var age = today.getFullYear() - birthDate.getFullYear();
         var m = today.getMonth() - birthDate.getMonth();
-        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
-        {
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
             age--;
-        }       
+        };
         return age;
     }
 
@@ -104,11 +103,11 @@ export class PeopleListComponent implements OnInit {
         setTimeout(this.fetchCharacter, this.delay)    
     }
 
-    //Connects to PeopleAPI to get requested information.
+    //Connects to CharactereAPI to get requested information.
     fetchCharacter = () => {   
         console.log(`Delayed by: ${this.delay} milliseconds`);
         let fullUrl = this.characterAPIUrl + this.input;
-        let getCharacter = this.http.get<ICharacters[]>(fullUrl).pipe(
+        let getCharacter = this.http.get<ICharacter[]>(fullUrl).pipe(
             // tap(data => console.log('All: ', JSON.stringify(data))),
             catchError(this.handleError)  
         );
@@ -119,7 +118,7 @@ export class PeopleListComponent implements OnInit {
         });
     };
 
-    setServiceData(charcter:ICharacters){
+    setServiceData(charcter:ICharacter){
         this.sessionService.setData(charcter)
     }
 
