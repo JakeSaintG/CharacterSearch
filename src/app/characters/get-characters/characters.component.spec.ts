@@ -1,28 +1,27 @@
 import { TestBed } from '@angular/core/testing';
-import { ICharacters } from './people';
-import { PeopleListComponent } from './people.component';
+import { ICharacter } from './character';
+import { CharactersListComponent } from './characters.component';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-describe('PeopleListComponent', () => {
+describe('CharactersListComponent', () => {
     beforeEach(async () => {
       await TestBed.configureTestingModule({
         imports: [HttpClientTestingModule],
         declarations: [
-          PeopleListComponent
+          CharactersListComponent
         ],
       }).compileComponents();
     });
 
-
-    it(`should contain a list of people`, () => {
-      const fixture = TestBed.createComponent(PeopleListComponent);
+    it(`should contain a list of characters`, () => {
+      const fixture = TestBed.createComponent(CharactersListComponent);
       const app = fixture.componentInstance;
-      const SUT: ICharacters[] = [ ];
+      const SUT: ICharacter[] = [ ];
       expect(app.characters).toEqual(SUT); 
     });
 
     it(`should return an accurate age`, () => {
-      const fixture = TestBed.createComponent(PeopleListComponent);
+      const fixture = TestBed.createComponent(CharactersListComponent);
       const app = fixture.componentInstance;
       let date: Date = new Date()
       const expected:number = 0;
@@ -31,7 +30,7 @@ describe('PeopleListComponent', () => {
     });
 
     it('should render table', () => {
-      const app = TestBed.createComponent(PeopleListComponent);
+      const app = TestBed.createComponent(CharactersListComponent);
       app.detectChanges();
       const compiled = app.nativeElement as HTMLElement;
       expect(compiled.querySelector('table')?.getElementsByTagName).toBeTruthy;

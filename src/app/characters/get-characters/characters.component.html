@@ -30,11 +30,11 @@
                 <h3>The character that you searched for cannot be found!</h3>
                 <p >You can add them or check your spelling.</p>
                 <p >If you are concerned about a connection issue, please ensure that <br>
-                    the companion API is running on "http://localhost:5000/people"</p>
+                    the companion API is running on "http://localhost:5000/character"</p>
             </div>
             <div *ngIf="displayIntroMessage">
                 <h3>Hello!</h3>
-                <p>Please search for a user in the searchbox above.</p>
+                <p>Please search for a character in the searchbox above.</p>
             </div>
             <div [hidden]="hideLoad">
                 <div class="progress-bar">
@@ -79,7 +79,7 @@
                         </ul>
                     </td>
                     <td>
-                        <button (click)="setServiceData(character)" [routerLink]="['/people', character.name]" >View</button>
+                        <button (click)="setServiceData(character)" [routerLink]="['/character', character.name]" >View</button>
                     </td>     
                 </tr>
             </tbody>

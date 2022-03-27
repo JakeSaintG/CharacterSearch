@@ -3,17 +3,17 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { PeopleListComponent } from './people/getPeople/people.component';
-import { AddPeopleComponent } from './people/sendPeople/addPeople.component';
-import { PeopleProfileComponent } from './people/people-profile/people-profile.component';
+import { CharactersListComponent } from './characters/get-characters/characters.component';
+import { PostNewCharacterComponent } from './characters/post-new-character/post-new-character.component';
+import { CharacterProfileComponent } from './characters/character-profile/character-profile.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PeopleListComponent,
-    AddPeopleComponent,
-    PeopleProfileComponent
+    CharactersListComponent,
+    PostNewCharacterComponent,
+    CharacterProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -21,9 +21,9 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      {path: 'people', component: PeopleListComponent},
-      {path: 'people/:name', component: PeopleProfileComponent},
-      {path: '', redirectTo: "people", pathMatch: 'full'},
+      {path: 'character', component: CharactersListComponent},
+      {path: 'character/:name', component: CharacterProfileComponent},
+      {path: '', redirectTo: "character", pathMatch: 'full'},
       // {path: '**', component: PageNoneFoundComponent}
     ])
   ],

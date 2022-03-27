@@ -1,4 +1,4 @@
-# PeopleSearch
+# CharacterSearch
 ## _An Angular Project_
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.3.
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
@@ -19,7 +19,7 @@ ng build
 ```sh
 npm start
 ```
-- The PeopleSearch application is now hosted on "http://localhost:4200/"
+- The CharacterSearch application is now hosted on "http://localhost:4200/"
 - Use "CTRL+C" to quit
 - Run the below line to execute the unit tests via [Karma](https://karma-runner.github.io):
 ```sh
@@ -32,12 +32,12 @@ ng test
 -- Will pull and display information on Paul McCartney and Paul Revere
 - "mccartney"
 -- Will pull and display information on just Paul McCartney
-- Leaving the form blank will pull information on all people stored in the PeopleAPI
+- Leaving the form blank will pull information on all characters stored in the CharacterAPI
 - If you entered a person, you should be able to retrieve information on that person by entering their name.
 
 ## Examples using the "Add a person" form
-- Fill in the form that appears when "Add User" is clicked.
-- Submit the form to POST to PeopleAPI 
+- Fill in the form that appears when "Add Character" is clicked.
+- Submit the form to POST to CharacterAPI 
 - You should then be able to retrieve the information by seraching for the person that you added!
 
 ## Special Thanks
@@ -48,7 +48,6 @@ ng test
 - Sending images works but sends 200 back from the API as an error code
 
 ## Areas of Improvement
-- Changing many of the uses of "people" to "user" throughout the application code.
 - Showing a success notification if the person data was uploaded successfully.
 - Utilizing Angular's ReactiveFormsModule to create the form for adding a person.
 - Deliving deeper in the features of Angular and refactoring.

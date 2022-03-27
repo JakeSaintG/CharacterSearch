@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef } from '@angular/core';
-//ng new PeopleSearch --prefix ps
+//ng new CharacterSearch --prefix ps
 
 @Component({
   selector: 'ps-root',
